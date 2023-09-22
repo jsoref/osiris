@@ -114,27 +114,27 @@ explicitly being directed to do so.
 To enabled the zeroscaler to scale a deployment with idling pods to zero
 replicas, annotate the deployment like so:
 
-```
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  namespace: my-aoo
-  name: my-app
-  annotations:
-    osiris.dm.gg/enableScaling: "true"
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: my-app
-  template:
-    metadata:
-      labels:
-        app: nginx
-      annotations:
-        osiris.dm.gg/collectMetrics: "true"
-    # ...
-  # ...
+```diff
+ apiVersion: apps/v1
+ kind: Deployment
+ metadata:
+   namespace: my-aoo
+   name: my-app
++  annotations:
++    osiris.dm.gg/enableScaling: "true"
+ spec:
+   replicas: 1
+   selector:
+     matchLabels:
+       app: my-app
+   template:
+     metadata:
+       labels:
+         app: nginx
++      annotations:
++        osiris.dm.gg/collectMetrics: "true"
+     # ...
+   # ...
 ```
 
 Note that the template for the pod _also_ uses an annotation to enable Osiris--
@@ -150,19 +150,19 @@ endpoints controller. Such services must also utilize an annotation to indicate
 which deployment should be reactivated when the activator component intercepts a
 request on their behalf. For example:
 
-```
-kind: Service
-apiVersion: v1
-metadata:
-  namespace: my-namespace
-  name: my-app
-  annotations:
-    osiris.dm.gg/manageEndpoints: "true"
-    osiris.dm.gg/deployment: my-app
-spec:
-  selector:
-    app: my-app
-  # ...
+```diff
+ kind: Service
+ apiVersion: v1
+ metadata:
+   namespace: my-namespace
+   name: my-app
+   annotations:
++    osiris.dm.gg/manageEndpoints: "true"
++    osiris.dm.gg/deployment: my-app
+ spec:
+   selector:
+     app: my-app
+   # ...
 ```
 
 ### Configuration
