@@ -74,13 +74,13 @@ Prerequisites:
 
 First, add the Osiris charts repository:
 
-```
+```sh
 helm repo add osiris https://dailymotion-oss.github.io/osiris/charts
 ```
 
 And then install it:
 
-```
+```sh
 helm install osiris/osiris \
   --name osiris \
   --namespace osiris-system
@@ -99,7 +99,7 @@ The following table lists the configurable parameters of the Helm chart and thei
 
 Example of installation with Helm and a custom configuration:
 
-```
+```sh
 helm install osiris/osiris \
   --name osiris \
   --namespace osiris-system \
@@ -220,7 +220,7 @@ This is the default scraper, which doesn't need any configuration.
 The prometheus scraper retrieves metrics about the request count from your own prometheus endpoint. To use it, your application need to expose an endpoint with metrics in the prometheus format.
 You can then set the following annotation:
 
-```
+```yaml
 annotations:
   osiris.dm.gg/metricsCollector: |
     {
@@ -243,7 +243,7 @@ The schema of the prometheus implementation configuration is:
 
 Deploy the example application `hello-osiris` :
 
-```
+```sh
 kubectl create -f ./example/hello-osiris.yaml
 ```
 
@@ -251,7 +251,7 @@ This will create an Osiris-enabled deployment and service named `hello-osiris`.
 
 Get the External IP of the `hello-osiris` service once it appears:
 
-```
+```sh
 kubectl get service hello-osiris -o jsonpath='{.status.loadBalancer.ingress[*].ip}'
 ```
 
