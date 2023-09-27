@@ -54,6 +54,6 @@ webhooks:
     operations:
     - CREATE
     - UPDATE
-  failurePolicy: Ignore
+  failurePolicy: {{ .Values.endpointsHijacker.webhooks.failurePolicy }}
   sideEffects: None
   admissionReviewVersions: ["v1", "v1beta1"]
