@@ -115,7 +115,7 @@ endpointsHijacker:
   affinity: {}
   webhooks:
     failurePolicy: Ignore
-    securePort: 5000
+    securePort: 10250
 
 certmanager:
     # -- Enables cert-manager to automatically issue selfSigned certificates
