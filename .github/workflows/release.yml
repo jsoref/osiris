@@ -40,6 +40,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Helm Chart
+        if: false
         uses: docker://quay.io/helmpack/chart-releaser:v1.0.0
         with:
           args: cr upload
@@ -50,8 +51,10 @@ jobs:
           CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Helm Charts Index Directory
+        if: false
         run: mkdir -p ./.cr-index
       - name: Update Helm Charts Index
+        if: false
         uses: docker://quay.io/helmpack/chart-releaser:v1.0.0
         with:
           args: cr index
@@ -61,6 +64,7 @@ jobs:
           CR_GIT_REPO: 'osiris'
 
       - name: Push Helm Charts Index
+        if: false
         uses: peaceiris/actions-gh-pages@v3.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
