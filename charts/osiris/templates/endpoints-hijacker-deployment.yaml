@@ -39,9 +39,11 @@ spec:
           value: /osiris/cert/tls.crt
         - name: TLS_KEY_FILE
           value: /osiris/cert/tls.key
+        - name: SECURE_PORT
+          value: "{{ .Values.endpointsHijacker.webhooks.securePort }}"
         ports:
         - name: https
-          containerPort: 5000
+          containerPort: {{ .Values.endpointsHijacker.webhooks.securePort }}
           protocol: TCP
         livenessProbe:
           httpGet:
