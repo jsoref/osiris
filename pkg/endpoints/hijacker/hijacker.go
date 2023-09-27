@@ -19,8 +19,6 @@ import (
 	"github.com/dailymotion-oss/osiris/pkg/kubernetes"
 )
 
-const port = 5000
-
 // Hijacker is an interface for a component that handles webhook requests
 // for patching Osiris-enabled services in a manner that will permit the
 // Osiris endpoints controller to manage service endpoints
@@ -51,7 +49,7 @@ func NewHijacker(config Config) Hijacker {
 			runtime.NewScheme(),
 		).UniversalDeserializer(),
 		srv: &http.Server{
-			Addr:    fmt.Sprintf(":%d", port),
+			Addr:    fmt.Sprintf(":%d", config.SecurePort),
 			Handler: mux,
 		},
 	}

@@ -9,6 +9,7 @@ const envconfigPrefix = "OSIRIS_ENDPOINTS_HIJACKER"
 type Config struct {
 	TLSCertFile string `envconfig:"TLS_CERT_FILE" required:"true"`
 	TLSKeyFile  string `envconfig:"TLS_KEY_FILE" required:"true"`
+	SecurePort  int32  `envconfig:"SECURE_PORT" default:"5000"`
 }
 
 // NewConfigWithDefaults returns a Config object with default values already
