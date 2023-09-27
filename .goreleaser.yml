@@ -7,9 +7,9 @@ builds:
     goarch:
       - amd64
     ldflags:
-      - -X github.com/dailymotion-oss/osiris/pkg/version.version={{.Version}}
-      - -X github.com/dailymotion-oss/osiris/pkg/version.commit={{.Commit}}
-      - -X github.com/dailymotion-oss/osiris/pkg/version.date={{.Date}}
+      - -X github.com/jsoref/osiris/pkg/version.version={{.Version}}
+      - -X github.com/jsoref/osiris/pkg/version.commit={{.Commit}}
+      - -X github.com/jsoref/osiris/pkg/version.date={{.Date}}
     env:
       - CGO_ENABLED=0
 
@@ -21,11 +21,11 @@ dockers:
     extra_files:
       - bin/
     image_templates:
-      - "ghcr.io/dailymotion-oss/{{.ProjectName}}:{{ .Version }}"
-      - "ghcr.io/dailymotion-oss/{{.ProjectName}}:{{ .Tag }}"
-      - "ghcr.io/dailymotion-oss/{{.ProjectName}}:v{{ .Major }}"
-      - "ghcr.io/dailymotion-oss/{{.ProjectName}}:v{{ .Major }}.{{ .Minor }}"
-      - "ghcr.io/dailymotion-oss/{{.ProjectName}}:latest"
+      - "ghcr.io/jsoref/{{.ProjectName}}:{{ .Version }}"
+      - "ghcr.io/jsoref/{{.ProjectName}}:{{ .Tag }}"
+      - "ghcr.io/jsoref/{{.ProjectName}}:v{{ .Major }}"
+      - "ghcr.io/jsoref/{{.ProjectName}}:v{{ .Major }}.{{ .Minor }}"
+      - "ghcr.io/jsoref/{{.ProjectName}}:latest"
     build_flag_templates:
       - "--pull"
       - "--label=org.opencontainers.image.created={{.Date}}"
