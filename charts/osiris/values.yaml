@@ -76,6 +76,8 @@ proxyInjector:
   # Optional endpoint of an opentelemetry collector (insecure GRPC endpoint)
   # host:port format (port 55680 for grafana-tempo)
   openTelemetryEndpoint:
+  webhooks:
+    nameSpaceExclusions: []
 
 endpointsController:
   resources: {}
@@ -113,6 +115,8 @@ endpointsHijacker:
   nodeSelector: {}
   tolerations: []
   affinity: {}
+  webhooks:
+    nameSpaceExclusions: []
 
 certmanager:
     # -- Enables cert-manager to automatically issue selfSigned certificates
